@@ -1,6 +1,3 @@
-[![Gitter](https://img.shields.io/gitter/room/ionos-cloud/sdk-general)](https://gitter.im/ionos-cloud/sdk-general)
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/com.ionoscloud/ionos-cloud-sdk-dbaas-mongo/badge.svg?style=plastic)](https://mvnrepository.com/artifact/com.ionoscloud/ionos-cloud-sdk-dbaas-mongo)
-
 ## Overview
 
 An enterprise-grade Database is provided as a Service (DBaaS) solution that can be managed through a browser-based "Data Center Designer" (DCD) tool or via an easy-to-use API.
