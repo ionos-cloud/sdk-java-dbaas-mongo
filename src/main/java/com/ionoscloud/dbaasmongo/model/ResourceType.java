@@ -34,7 +34,9 @@ public enum ResourceType {
   
   CLUSTER("cluster"),
   
-  USER("user");
+  USER("user"),
+  
+  SNAPSHOT("snapshot");
 
   private String value;
 

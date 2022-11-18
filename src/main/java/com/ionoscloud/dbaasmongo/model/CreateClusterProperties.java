@@ -32,7 +32,7 @@ import java.util.List;
  * The properties with all data needed to create a new MongoDB cluster. 
  */
 @ApiModel(description = "The properties with all data needed to create a new MongoDB cluster. ")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-21T07:42:31.609Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-18T17:02:46.259Z[Etc/UTC]")
 
 public class CreateClusterProperties {
   
@@ -79,10 +79,10 @@ public class CreateClusterProperties {
   }
 
    /**
-   * The unique ID of the template, which specifies the number of cores, storage size, and memory. 
+   * The unique ID of the template, which specifies the number of cores, storage size, and memory. You cannot downgrade to a smaller template or minor edition (e.g. from business to playground). To get a list of all templates to confirm the changes use the /templates endpoint. 
    * @return templateID
   **/
-  @ApiModelProperty(example = "498ae72f-411f-11eb-9d07-046c59cc737e", required = true, value = "The unique ID of the template, which specifies the number of cores, storage size, and memory. ")
+  @ApiModelProperty(example = "498ae72f-411f-11eb-9d07-046c59cc737e", required = true, value = "The unique ID of the template, which specifies the number of cores, storage size, and memory. You cannot downgrade to a smaller template or minor edition (e.g. from business to playground). To get a list of all templates to confirm the changes use the /templates endpoint. ")
 
   public String getTemplateID() {
     return templateID;

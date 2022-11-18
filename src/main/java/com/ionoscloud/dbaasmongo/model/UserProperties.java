@@ -31,18 +31,13 @@ import java.util.List;
  * Mongodb user properties.
  */
 @ApiModel(description = "Mongodb user properties.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-21T07:42:31.609Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-18T17:02:46.259Z[Etc/UTC]")
 
 public class UserProperties {
   
   public static final String SERIALIZED_NAME_USERNAME = "username";
   @SerializedName(SERIALIZED_NAME_USERNAME)
   private String username;
-
-
-  public static final String SERIALIZED_NAME_DATABASE = "database";
-  @SerializedName(SERIALIZED_NAME_DATABASE)
-  private String database;
 
 
   public static final String SERIALIZED_NAME_PASSWORD = "password";
@@ -75,29 +70,6 @@ public class UserProperties {
 
   public void setUsername(String username) {
     this.username = username;
-  }
-
-
-
-  public UserProperties database(String database) {
-    
-    this.database = database;
-    return this;
-  }
-
-   /**
-   * The user database to use for authentication.
-   * @return database
-  **/
-  @ApiModelProperty(example = "admin", required = true, value = "The user database to use for authentication.")
-
-  public String getDatabase() {
-    return database;
-  }
-
-
-  public void setDatabase(String database) {
-    this.database = database;
   }
 
 
@@ -165,7 +137,7 @@ public class UserProperties {
       return false;
     }
     UserProperties userProperties = (UserProperties) o;
-    return Objects.equals(this.username, userProperties.username) && Objects.equals(this.database, userProperties.database) && Objects.equals(this.password, userProperties.password) && Objects.equals(this.roles, userProperties.roles);
+    return Objects.equals(this.username, userProperties.username) && Objects.equals(this.password, userProperties.password) && Objects.equals(this.roles, userProperties.roles);
   }
 
 
@@ -177,8 +149,6 @@ public class UserProperties {
     sb.append("class UserProperties {\n");
     
     sb.append("    username: ").append(toIndentedString(username)).append("\n");
-
-    sb.append("    database: ").append(toIndentedString(database)).append("\n");
 
     sb.append("    password: ").append(toIndentedString(password)).append("\n");
 

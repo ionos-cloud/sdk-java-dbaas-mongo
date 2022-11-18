@@ -20,7 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.ionoscloud.dbaasmongo.model.ClusterLogsMessages;
+import com.ionoscloud.dbaasmongo.model.UserRoles;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -28,75 +28,76 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ClusterLogsInstances
+ * MongoDB database user patch request properties.
  */
+@ApiModel(description = "MongoDB database user patch request properties.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-18T17:02:46.259Z[Etc/UTC]")
 
-public class ClusterLogsInstances {
+public class PatchUserProperties {
   
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_PASSWORD = "password";
+  @SerializedName(SERIALIZED_NAME_PASSWORD)
+  private String password;
 
 
-  public static final String SERIALIZED_NAME_MESSAGES = "messages";
-  @SerializedName(SERIALIZED_NAME_MESSAGES)
-  private List<ClusterLogsMessages> messages = null;
+  public static final String SERIALIZED_NAME_ROLES = "roles";
+  @SerializedName(SERIALIZED_NAME_ROLES)
+  private List<UserRoles> roles = null;
 
   
 
-  public ClusterLogsInstances name(String name) {
+  public PatchUserProperties password(String password) {
     
-    this.name = name;
+    this.password = password;
     return this;
   }
 
    /**
-   * The name of the MongoDB instance.
-   * @return name
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "mongodb-cluster-0", value = "The name of the MongoDB instance.")
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-
-  public ClusterLogsInstances messages(List<ClusterLogsMessages> messages) {
-    
-    this.messages = messages;
-    return this;
-  }
-
-  public ClusterLogsInstances addMessagesItem(ClusterLogsMessages messagesItem) {
-    if (this.messages == null) {
-      this.messages = new ArrayList<ClusterLogsMessages>();
-    }
-    this.messages.add(messagesItem);
-    return this;
-  }
-
-   /**
-   * Get messages
-   * @return messages
+   * Get password
+   * @return password
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<ClusterLogsMessages> getMessages() {
-    return messages;
+  public String getPassword() {
+    return password;
   }
 
 
-  public void setMessages(List<ClusterLogsMessages> messages) {
-    this.messages = messages;
+  public void setPassword(String password) {
+    this.password = password;
+  }
+
+
+
+  public PatchUserProperties roles(List<UserRoles> roles) {
+    
+    this.roles = roles;
+    return this;
+  }
+
+  public PatchUserProperties addRolesItem(UserRoles rolesItem) {
+    if (this.roles == null) {
+      this.roles = new ArrayList<UserRoles>();
+    }
+    this.roles.add(rolesItem);
+    return this;
+  }
+
+   /**
+   * Get roles
+   * @return roles
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<UserRoles> getRoles() {
+    return roles;
+  }
+
+
+  public void setRoles(List<UserRoles> roles) {
+    this.roles = roles;
   }
 
 
@@ -108,8 +109,8 @@ public class ClusterLogsInstances {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ClusterLogsInstances clusterLogsInstances = (ClusterLogsInstances) o;
-    return Objects.equals(this.name, clusterLogsInstances.name) && Objects.equals(this.messages, clusterLogsInstances.messages);
+    PatchUserProperties patchUserProperties = (PatchUserProperties) o;
+    return Objects.equals(this.password, patchUserProperties.password) && Objects.equals(this.roles, patchUserProperties.roles);
   }
 
 
@@ -118,11 +119,11 @@ public class ClusterLogsInstances {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ClusterLogsInstances {\n");
+    sb.append("class PatchUserProperties {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    password: ").append(toIndentedString(password)).append("\n");
 
-    sb.append("    messages: ").append(toIndentedString(messages)).append("\n");
+    sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("}");
     return sb.toString();
   }

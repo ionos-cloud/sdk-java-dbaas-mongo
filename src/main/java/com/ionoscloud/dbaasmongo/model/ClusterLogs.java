@@ -31,7 +31,7 @@ import java.util.List;
  * The logs of the MongoDB cluster.
  */
 @ApiModel(description = "The logs of the MongoDB cluster.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-21T07:42:31.609Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-18T17:02:46.259Z[Etc/UTC]")
 
 public class ClusterLogs {
   

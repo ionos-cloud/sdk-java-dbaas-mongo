@@ -28,6 +28,7 @@ import java.io.IOException;
 
 
 import com.ionoscloud.dbaasmongo.model.ErrorResponse;
+import com.ionoscloud.dbaasmongo.model.PatchUserRequest;
 import com.ionoscloud.dbaasmongo.model.User;
 import com.ionoscloud.dbaasmongo.model.UsersList;
 
@@ -441,6 +442,151 @@ public class UsersApi {
 
         okhttp3.Call localVarCall = clustersUsersGetValidateBeforeCall(clusterId, _callback);
         Type localVarReturnType = new TypeToken<UsersList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for clustersUsersPatch
+     * @param clusterId The unique ID of the cluster. (required)
+     * @param database The authentication database. (required)
+     * @param username The authentication username. (required)
+     * @param patchUserRequest Part of the MongoDB user which should be modified. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The user identified by the username and database parameters will be patched.  </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
+     </table>
+     */
+    public okhttp3.Call clustersUsersPatchCall(String clusterId, String database, String username, PatchUserRequest patchUserRequest, final ApiCallback<User> _callback) throws ApiException {
+        Object localVarPostBody = patchUserRequest;
+
+        // create path and map variables
+        String localVarPath = "/clusters/{clusterId}/users/{database}/{username}"
+            .replaceAll("\\{" + "clusterId" + "\\}", localVarApiClient.escapeString(clusterId.toString()))
+            .replaceAll("\\{" + "database" + "\\}", localVarApiClient.escapeString(database.toString()))
+            .replaceAll("\\{" + "username" + "\\}", localVarApiClient.escapeString(username.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call clustersUsersPatchValidateBeforeCall(String clusterId, String database, String username, PatchUserRequest patchUserRequest, final ApiCallback<User> _callback) throws ApiException {
+        
+        // verify the required parameter 'clusterId' is set
+        if (clusterId == null) {
+            throw new ApiException("Missing the required parameter 'clusterId' when calling clustersUsersPatch(Async)");
+        }
+        
+        // verify the required parameter 'database' is set
+        if (database == null) {
+            throw new ApiException("Missing the required parameter 'database' when calling clustersUsersPatch(Async)");
+        }
+        
+        // verify the required parameter 'username' is set
+        if (username == null) {
+            throw new ApiException("Missing the required parameter 'username' when calling clustersUsersPatch(Async)");
+        }
+        
+        // verify the required parameter 'patchUserRequest' is set
+        if (patchUserRequest == null) {
+            throw new ApiException("Missing the required parameter 'patchUserRequest' when calling clustersUsersPatch(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = clustersUsersPatchCall(clusterId, database, username, patchUserRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Patch a MongoDB User by ID
+     * Patches a MongoDB user specified by its ID.
+     * @param clusterId The unique ID of the cluster. (required)
+     * @param database The authentication database. (required)
+     * @param username The authentication username. (required)
+     * @param patchUserRequest Part of the MongoDB user which should be modified. (required)
+     * @return User
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The user identified by the username and database parameters will be patched.  </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
+     </table>
+     */
+    public User clustersUsersPatch(String clusterId, String database, String username, PatchUserRequest patchUserRequest) throws ApiException {
+        ApiResponse<User> localVarResp = clustersUsersPatchWithHttpInfo(clusterId, database, username, patchUserRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Patch a MongoDB User by ID
+     * Patches a MongoDB user specified by its ID.
+     * @param clusterId The unique ID of the cluster. (required)
+     * @param database The authentication database. (required)
+     * @param username The authentication username. (required)
+     * @param patchUserRequest Part of the MongoDB user which should be modified. (required)
+     * @return ApiResponse&lt;User&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The user identified by the username and database parameters will be patched.  </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
+     </table>
+     */
+    public ApiResponse<User> clustersUsersPatchWithHttpInfo(String clusterId, String database, String username, PatchUserRequest patchUserRequest) throws ApiException {
+        okhttp3.Call localVarCall = clustersUsersPatchValidateBeforeCall(clusterId, database, username, patchUserRequest, null);
+        Type localVarReturnType = new TypeToken<User>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Patch a MongoDB User by ID (asynchronously)
+     * Patches a MongoDB user specified by its ID.
+     * @param clusterId The unique ID of the cluster. (required)
+     * @param database The authentication database. (required)
+     * @param username The authentication username. (required)
+     * @param patchUserRequest Part of the MongoDB user which should be modified. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The user identified by the username and database parameters will be patched.  </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
+     </table>
+     */
+    public okhttp3.Call clustersUsersPatchAsync(String clusterId, String database, String username, PatchUserRequest patchUserRequest, final ApiCallback<User> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = clustersUsersPatchValidateBeforeCall(clusterId, database, username, patchUserRequest, _callback);
+        Type localVarReturnType = new TypeToken<User>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

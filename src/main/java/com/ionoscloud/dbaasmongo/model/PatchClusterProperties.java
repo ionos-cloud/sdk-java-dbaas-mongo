@@ -29,26 +29,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Properties of a database cluster.
+ * Properties of the payload to change a cluster.
  */
-@ApiModel(description = "Properties of a database cluster.")
+@ApiModel(description = "Properties of the payload to change a cluster.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-18T17:02:46.259Z[Etc/UTC]")
 
-public class ClusterProperties {
+public class PatchClusterProperties {
   
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
   private String displayName;
 
 
-  public static final String SERIALIZED_NAME_MONGO_D_B_VERSION = "mongoDBVersion";
-  @SerializedName(SERIALIZED_NAME_MONGO_D_B_VERSION)
-  private String mongoDBVersion;
-
-
-  public static final String SERIALIZED_NAME_LOCATION = "location";
-  @SerializedName(SERIALIZED_NAME_LOCATION)
-  private String location;
+  public static final String SERIALIZED_NAME_MAINTENANCE_WINDOW = "maintenanceWindow";
+  @SerializedName(SERIALIZED_NAME_MAINTENANCE_WINDOW)
+  private MaintenanceWindow maintenanceWindow;
 
 
   public static final String SERIALIZED_NAME_INSTANCES = "instances";
@@ -61,23 +56,13 @@ public class ClusterProperties {
   private List<Connection> connections = null;
 
 
-  public static final String SERIALIZED_NAME_MAINTENANCE_WINDOW = "maintenanceWindow";
-  @SerializedName(SERIALIZED_NAME_MAINTENANCE_WINDOW)
-  private MaintenanceWindow maintenanceWindow;
-
-
   public static final String SERIALIZED_NAME_TEMPLATE_I_D = "templateID";
   @SerializedName(SERIALIZED_NAME_TEMPLATE_I_D)
   private String templateID;
 
-
-  public static final String SERIALIZED_NAME_CONNECTION_STRING = "connectionString";
-  @SerializedName(SERIALIZED_NAME_CONNECTION_STRING)
-  private String connectionString;
-
   
 
-  public ClusterProperties displayName(String displayName) {
+  public PatchClusterProperties displayName(String displayName) {
     
     this.displayName = displayName;
     return this;
@@ -101,55 +86,31 @@ public class ClusterProperties {
 
 
 
-  public ClusterProperties mongoDBVersion(String mongoDBVersion) {
+  public PatchClusterProperties maintenanceWindow(MaintenanceWindow maintenanceWindow) {
     
-    this.mongoDBVersion = mongoDBVersion;
+    this.maintenanceWindow = maintenanceWindow;
     return this;
   }
 
    /**
-   * The MongoDB version of your cluster.
-   * @return mongoDBVersion
+   * Get maintenanceWindow
+   * @return maintenanceWindow
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "5.0", value = "The MongoDB version of your cluster.")
+  @ApiModelProperty(value = "")
 
-  public String getMongoDBVersion() {
-    return mongoDBVersion;
+  public MaintenanceWindow getMaintenanceWindow() {
+    return maintenanceWindow;
   }
 
 
-  public void setMongoDBVersion(String mongoDBVersion) {
-    this.mongoDBVersion = mongoDBVersion;
-  }
-
-
-
-  public ClusterProperties location(String location) {
-    
-    this.location = location;
-    return this;
-  }
-
-   /**
-   * The physical location where the cluster will be created. This is the location where all your instances will be located. This property is immutable. 
-   * @return location
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "de/txl", value = "The physical location where the cluster will be created. This is the location where all your instances will be located. This property is immutable. ")
-
-  public String getLocation() {
-    return location;
-  }
-
-
-  public void setLocation(String location) {
-    this.location = location;
+  public void setMaintenanceWindow(MaintenanceWindow maintenanceWindow) {
+    this.maintenanceWindow = maintenanceWindow;
   }
 
 
 
-  public ClusterProperties instances(Integer instances) {
+  public PatchClusterProperties instances(Integer instances) {
     
     this.instances = instances;
     return this;
@@ -173,13 +134,13 @@ public class ClusterProperties {
 
 
 
-  public ClusterProperties connections(List<Connection> connections) {
+  public PatchClusterProperties connections(List<Connection> connections) {
     
     this.connections = connections;
     return this;
   }
 
-  public ClusterProperties addConnectionsItem(Connection connectionsItem) {
+  public PatchClusterProperties addConnectionsItem(Connection connectionsItem) {
     if (this.connections == null) {
       this.connections = new ArrayList<Connection>();
     }
@@ -205,31 +166,7 @@ public class ClusterProperties {
 
 
 
-  public ClusterProperties maintenanceWindow(MaintenanceWindow maintenanceWindow) {
-    
-    this.maintenanceWindow = maintenanceWindow;
-    return this;
-  }
-
-   /**
-   * Get maintenanceWindow
-   * @return maintenanceWindow
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public MaintenanceWindow getMaintenanceWindow() {
-    return maintenanceWindow;
-  }
-
-
-  public void setMaintenanceWindow(MaintenanceWindow maintenanceWindow) {
-    this.maintenanceWindow = maintenanceWindow;
-  }
-
-
-
-  public ClusterProperties templateID(String templateID) {
+  public PatchClusterProperties templateID(String templateID) {
     
     this.templateID = templateID;
     return this;
@@ -252,30 +189,6 @@ public class ClusterProperties {
   }
 
 
-
-  public ClusterProperties connectionString(String connectionString) {
-    
-    this.connectionString = connectionString;
-    return this;
-  }
-
-   /**
-   * The connection string for your cluster.
-   * @return connectionString
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "mongo+srv://m-498ae72f-411f-11eb-9d07-046c59cc737e.mongodb.de-txl.ionos.com", value = "The connection string for your cluster.")
-
-  public String getConnectionString() {
-    return connectionString;
-  }
-
-
-  public void setConnectionString(String connectionString) {
-    this.connectionString = connectionString;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -284,8 +197,8 @@ public class ClusterProperties {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ClusterProperties clusterProperties = (ClusterProperties) o;
-    return Objects.equals(this.displayName, clusterProperties.displayName) && Objects.equals(this.mongoDBVersion, clusterProperties.mongoDBVersion) && Objects.equals(this.location, clusterProperties.location) && Objects.equals(this.instances, clusterProperties.instances) && Objects.equals(this.connections, clusterProperties.connections) && Objects.equals(this.maintenanceWindow, clusterProperties.maintenanceWindow) && Objects.equals(this.templateID, clusterProperties.templateID) && Objects.equals(this.connectionString, clusterProperties.connectionString);
+    PatchClusterProperties patchClusterProperties = (PatchClusterProperties) o;
+    return Objects.equals(this.displayName, patchClusterProperties.displayName) && Objects.equals(this.maintenanceWindow, patchClusterProperties.maintenanceWindow) && Objects.equals(this.instances, patchClusterProperties.instances) && Objects.equals(this.connections, patchClusterProperties.connections) && Objects.equals(this.templateID, patchClusterProperties.templateID);
   }
 
 
@@ -294,23 +207,17 @@ public class ClusterProperties {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ClusterProperties {\n");
+    sb.append("class PatchClusterProperties {\n");
     
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
 
-    sb.append("    mongoDBVersion: ").append(toIndentedString(mongoDBVersion)).append("\n");
-
-    sb.append("    location: ").append(toIndentedString(location)).append("\n");
+    sb.append("    maintenanceWindow: ").append(toIndentedString(maintenanceWindow)).append("\n");
 
     sb.append("    instances: ").append(toIndentedString(instances)).append("\n");
 
     sb.append("    connections: ").append(toIndentedString(connections)).append("\n");
 
-    sb.append("    maintenanceWindow: ").append(toIndentedString(maintenanceWindow)).append("\n");
-
     sb.append("    templateID: ").append(toIndentedString(templateID)).append("\n");
-
-    sb.append("    connectionString: ").append(toIndentedString(connectionString)).append("\n");
     sb.append("}");
     return sb.toString();
   }

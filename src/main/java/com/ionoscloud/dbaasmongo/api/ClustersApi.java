@@ -31,6 +31,7 @@ import com.ionoscloud.dbaasmongo.model.ClusterList;
 import com.ionoscloud.dbaasmongo.model.ClusterResponse;
 import com.ionoscloud.dbaasmongo.model.CreateClusterRequest;
 import com.ionoscloud.dbaasmongo.model.ErrorResponse;
+import com.ionoscloud.dbaasmongo.model.PatchClusterRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -400,6 +401,131 @@ public class ClustersApi {
 
         okhttp3.Call localVarCall = clustersGetValidateBeforeCall(filterName, _callback);
         Type localVarReturnType = new TypeToken<ClusterList>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for clustersPatch
+     * @param clusterId The unique ID of the cluster. (required)
+     * @param patchClusterRequest Part of the cluster which should be modified. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful operation. </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
+     </table>
+     */
+    public okhttp3.Call clustersPatchCall(String clusterId, PatchClusterRequest patchClusterRequest, final ApiCallback<ClusterResponse> _callback) throws ApiException {
+        Object localVarPostBody = patchClusterRequest;
+
+        // create path and map variables
+        String localVarPath = "/clusters/{clusterId}"
+            .replaceAll("\\{" + "clusterId" + "\\}", localVarApiClient.escapeString(clusterId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "basicAuth", "tokenAuth" };
+        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call clustersPatchValidateBeforeCall(String clusterId, PatchClusterRequest patchClusterRequest, final ApiCallback<ClusterResponse> _callback) throws ApiException {
+        
+        // verify the required parameter 'clusterId' is set
+        if (clusterId == null) {
+            throw new ApiException("Missing the required parameter 'clusterId' when calling clustersPatch(Async)");
+        }
+        
+        // verify the required parameter 'patchClusterRequest' is set
+        if (patchClusterRequest == null) {
+            throw new ApiException("Missing the required parameter 'patchClusterRequest' when calling clustersPatch(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = clustersPatchCall(clusterId, patchClusterRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Patch a cluster
+     * Patch attributes of a MongoDB cluster.
+     * @param clusterId The unique ID of the cluster. (required)
+     * @param patchClusterRequest Part of the cluster which should be modified. (required)
+     * @return ClusterResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful operation. </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
+     </table>
+     */
+    public ClusterResponse clustersPatch(String clusterId, PatchClusterRequest patchClusterRequest) throws ApiException {
+        ApiResponse<ClusterResponse> localVarResp = clustersPatchWithHttpInfo(clusterId, patchClusterRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Patch a cluster
+     * Patch attributes of a MongoDB cluster.
+     * @param clusterId The unique ID of the cluster. (required)
+     * @param patchClusterRequest Part of the cluster which should be modified. (required)
+     * @return ApiResponse&lt;ClusterResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful operation. </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
+     </table>
+     */
+    public ApiResponse<ClusterResponse> clustersPatchWithHttpInfo(String clusterId, PatchClusterRequest patchClusterRequest) throws ApiException {
+        okhttp3.Call localVarCall = clustersPatchValidateBeforeCall(clusterId, patchClusterRequest, null);
+        Type localVarReturnType = new TypeToken<ClusterResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Patch a cluster (asynchronously)
+     * Patch attributes of a MongoDB cluster.
+     * @param clusterId The unique ID of the cluster. (required)
+     * @param patchClusterRequest Part of the cluster which should be modified. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> Successful operation. </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
+     </table>
+     */
+    public okhttp3.Call clustersPatchAsync(String clusterId, PatchClusterRequest patchClusterRequest, final ApiCallback<ClusterResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = clustersPatchValidateBeforeCall(clusterId, patchClusterRequest, _callback);
+        Type localVarReturnType = new TypeToken<ClusterResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

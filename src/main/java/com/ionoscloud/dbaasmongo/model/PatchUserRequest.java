@@ -20,83 +20,75 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.ionoscloud.dbaasmongo.model.ClusterLogsMessages;
+import com.ionoscloud.dbaasmongo.model.PatchUserProperties;
+import com.ionoscloud.dbaasmongo.model.UserMetadata;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * ClusterLogsInstances
+ * MongoDB database user patch request.
  */
+@ApiModel(description = "MongoDB database user patch request.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-18T17:02:46.259Z[Etc/UTC]")
 
-public class ClusterLogsInstances {
+public class PatchUserRequest {
   
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private UserMetadata metadata;
 
 
-  public static final String SERIALIZED_NAME_MESSAGES = "messages";
-  @SerializedName(SERIALIZED_NAME_MESSAGES)
-  private List<ClusterLogsMessages> messages = null;
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private PatchUserProperties properties;
 
   
 
-  public ClusterLogsInstances name(String name) {
+  public PatchUserRequest metadata(UserMetadata metadata) {
     
-    this.name = name;
+    this.metadata = metadata;
     return this;
   }
 
    /**
-   * The name of the MongoDB instance.
-   * @return name
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "mongodb-cluster-0", value = "The name of the MongoDB instance.")
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-
-  public ClusterLogsInstances messages(List<ClusterLogsMessages> messages) {
-    
-    this.messages = messages;
-    return this;
-  }
-
-  public ClusterLogsInstances addMessagesItem(ClusterLogsMessages messagesItem) {
-    if (this.messages == null) {
-      this.messages = new ArrayList<ClusterLogsMessages>();
-    }
-    this.messages.add(messagesItem);
-    return this;
-  }
-
-   /**
-   * Get messages
-   * @return messages
+   * Get metadata
+   * @return metadata
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<ClusterLogsMessages> getMessages() {
-    return messages;
+  public UserMetadata getMetadata() {
+    return metadata;
   }
 
 
-  public void setMessages(List<ClusterLogsMessages> messages) {
-    this.messages = messages;
+  public void setMetadata(UserMetadata metadata) {
+    this.metadata = metadata;
+  }
+
+
+
+  public PatchUserRequest properties(PatchUserProperties properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+   /**
+   * Get properties
+   * @return properties
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public PatchUserProperties getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(PatchUserProperties properties) {
+    this.properties = properties;
   }
 
 
@@ -108,8 +100,8 @@ public class ClusterLogsInstances {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ClusterLogsInstances clusterLogsInstances = (ClusterLogsInstances) o;
-    return Objects.equals(this.name, clusterLogsInstances.name) && Objects.equals(this.messages, clusterLogsInstances.messages);
+    PatchUserRequest patchUserRequest = (PatchUserRequest) o;
+    return Objects.equals(this.metadata, patchUserRequest.metadata) && Objects.equals(this.properties, patchUserRequest.properties);
   }
 
 
@@ -118,11 +110,11 @@ public class ClusterLogsInstances {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ClusterLogsInstances {\n");
+    sb.append("class PatchUserRequest {\n");
     
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
 
-    sb.append("    messages: ").append(toIndentedString(messages)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
   }

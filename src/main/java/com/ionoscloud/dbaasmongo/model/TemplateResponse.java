@@ -28,13 +28,23 @@ import java.io.IOException;
  * A MongoDB template item.
  */
 @ApiModel(description = "A MongoDB template item.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-21T07:42:31.609Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-18T17:02:46.259Z[Etc/UTC]")
 
 public class TemplateResponse {
   
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
+
+
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
+
+  public static final String SERIALIZED_NAME_EDITION = "edition";
+  @SerializedName(SERIALIZED_NAME_EDITION)
+  private String edition;
 
 
   public static final String SERIALIZED_NAME_CORES = "cores";
@@ -73,6 +83,54 @@ public class TemplateResponse {
 
   public void setId(String id) {
     this.id = id;
+  }
+
+
+
+  public TemplateResponse name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * The name of the template.
+   * @return name
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "MongoDB Community 4XL", value = "The name of the template.")
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
+
+
+  public TemplateResponse edition(String edition) {
+    
+    this.edition = edition;
+    return this;
+  }
+
+   /**
+   * The edition of the template (e.g. enterprise)
+   * @return edition
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "enterprise", value = "The edition of the template (e.g. enterprise)")
+
+  public String getEdition() {
+    return edition;
+  }
+
+
+  public void setEdition(String edition) {
+    this.edition = edition;
   }
 
 
@@ -157,7 +215,7 @@ public class TemplateResponse {
       return false;
     }
     TemplateResponse templateResponse = (TemplateResponse) o;
-    return Objects.equals(this.id, templateResponse.id) && Objects.equals(this.cores, templateResponse.cores) && Objects.equals(this.ram, templateResponse.ram) && Objects.equals(this.storageSize, templateResponse.storageSize);
+    return Objects.equals(this.id, templateResponse.id) && Objects.equals(this.name, templateResponse.name) && Objects.equals(this.edition, templateResponse.edition) && Objects.equals(this.cores, templateResponse.cores) && Objects.equals(this.ram, templateResponse.ram) && Objects.equals(this.storageSize, templateResponse.storageSize);
   }
 
 
@@ -169,6 +227,10 @@ public class TemplateResponse {
     sb.append("class TemplateResponse {\n");
     
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+
+    sb.append("    edition: ").append(toIndentedString(edition)).append("\n");
 
     sb.append("    cores: ").append(toIndentedString(cores)).append("\n");
 

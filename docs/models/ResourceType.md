@@ -11,4 +11,6 @@
 
 * `USER` (value: `"user"`)
 
+* `SNAPSHOT` (value: `"snapshot"`)
+
 

@@ -30,7 +30,7 @@ import java.util.List;
  * The network connection  details for your cluster.
  */
 @ApiModel(description = "The network connection  details for your cluster.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-21T07:42:31.609Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-18T17:02:46.259Z[Etc/UTC]")
 
 public class Connection {
   
@@ -108,10 +108,10 @@ public class Connection {
   }
 
    /**
-   * The list of IPs and subnet for your cluster. Note the following unavailable IP ranges: 10.233.64.0/18 10.233.0.0/18 10.233.114.0/24 
+   * The list of IPs for your cluster. All IPs must be in a /24 network. Note the following unavailable IP ranges: 10.233.114.0/24 
    * @return cidrList
   **/
-  @ApiModelProperty(example = "[\"192.168.1.100/24\",\"192.168.1.101/24\"]", required = true, value = "The list of IPs and subnet for your cluster. Note the following unavailable IP ranges: 10.233.64.0/18 10.233.0.0/18 10.233.114.0/24 ")
+  @ApiModelProperty(example = "[\"192.168.1.100/24\",\"192.168.1.101/24\"]", required = true, value = "The list of IPs for your cluster. All IPs must be in a /24 network. Note the following unavailable IP ranges: 10.233.114.0/24 ")
 
   public List<String> getCidrList() {
     return cidrList;

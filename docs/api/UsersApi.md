@@ -7,6 +7,7 @@ All URIs are relative to *https://api.ionos.com/databases/mongodb*
 | [**clustersUsersDelete**](UsersApi.md#clustersusersdelete) | **DELETE** /clusters/{clusterId}/users/{database}/{username} | Delete a MongoDB User by ID |
 | [**clustersUsersFindById**](UsersApi.md#clustersusersfindbyid) | **GET** /clusters/{clusterId}/users/{database}/{username} | Get a MongoDB User by ID |
 | [**clustersUsersGet**](UsersApi.md#clustersusersget) | **GET** /clusters/{clusterId}/users | Get a Cluster Users |
+| [**clustersUsersPatch**](UsersApi.md#clustersuserspatch) | **PATCH** /clusters/{clusterId}/users/{database}/{username} | Patch a MongoDB User by ID |
 | [**clustersUsersPost**](UsersApi.md#clustersuserspost) | **POST** /clusters/{clusterId}/users | Create MongoDB User |
 
 
@@ -193,6 +194,71 @@ public class Example {
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="clustersUsersPatch"></a>
+# **clustersUsersPatch**
+> User clustersUsersPatch(clusterId, database, username, patchUserRequest)
+
+Patch a MongoDB User by ID
+
+Patches a MongoDB user specified by its ID.
+
+### Example
+```java
+// Import classes:
+import com.ionoscloud.dbaasmongo.ApiClient;
+import com.ionoscloud.dbaasmongo.ApiException;
+import com.ionoscloud.dbaasmongo.Configuration;
+import com.ionoscloud.dbaasmongo.auth.*;
+import com.ionoscloud.dbaasmongo.model.*;
+import com.ionoscloud.dbaasmongo.api.UsersApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    
+    // Configure HTTP basic authorization: basicAuth
+    HttpBasicAuth basicAuthentication = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+    basicAuthentication.setUsername("YOUR USERNAME");
+    basicAuthentication.setPassword("YOUR PASSWORD");
+
+
+    UsersApi apiInstance = new UsersApi(defaultClient);
+    String clusterId = "clusterId_example"; // String | The unique ID of the cluster.
+    String database = "database_example"; // String | The authentication database.
+    String username = "username_example"; // String | The authentication username.
+    PatchUserRequest patchUserRequest = new PatchUserRequest(); // PatchUserRequest | Part of the MongoDB user which should be modified.
+    try {
+      User result = apiInstance.clustersUsersPatch(clusterId, database, username, patchUserRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling UsersApi#clustersUsersPatch");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **clusterId** | **String**| The unique ID of the cluster. |
+| **database** | **String**| The authentication database. |
+| **username** | **String**| The authentication username. |
+| **patchUserRequest** |  [**PatchUserRequest**](PatchUserRequest.md)| Part of the MongoDB user which should be modified. |
+
+### Return type
+
+[**User**](../models/User.md)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a name="clustersUsersPost"></a>

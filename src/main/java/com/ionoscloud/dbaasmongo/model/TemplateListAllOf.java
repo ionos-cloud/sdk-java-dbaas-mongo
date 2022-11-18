@@ -20,6 +20,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.ionoscloud.dbaasmongo.model.ResourceType;
 import com.ionoscloud.dbaasmongo.model.TemplateResponse;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -30,15 +31,73 @@ import java.util.List;
 /**
  * TemplateListAllOf
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-10-21T07:42:31.609Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-11-18T17:02:46.259Z[Etc/UTC]")
 
 public class TemplateListAllOf {
   
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private ResourceType type;
+
+
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
+
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   private List<TemplateResponse> items = null;
 
   
+
+  public TemplateListAllOf type(ResourceType type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public ResourceType getType() {
+    return type;
+  }
+
+
+  public void setType(ResourceType type) {
+    this.type = type;
+  }
+
+
+
+  public TemplateListAllOf id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * The unique ID of the resource.
+   * @return id
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "498ae72f-411f-11eb-9d07-046c59cc737e", value = "The unique ID of the resource.")
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
 
   public TemplateListAllOf items(List<TemplateResponse> items) {
     
@@ -80,7 +139,7 @@ public class TemplateListAllOf {
       return false;
     }
     TemplateListAllOf templateListAllOf = (TemplateListAllOf) o;
-    return Objects.equals(this.items, templateListAllOf.items);
+    return Objects.equals(this.type, templateListAllOf.type) && Objects.equals(this.id, templateListAllOf.id) && Objects.equals(this.items, templateListAllOf.items);
   }
 
 
@@ -91,6 +150,10 @@ public class TemplateListAllOf {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateListAllOf {\n");
     
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("}");
     return sb.toString();
