@@ -18,6 +18,10 @@ a list of mongodb user role.
 | ---- | -----
 | READ | &quot;read&quot; |
 | READWRITE | &quot;readWrite&quot; |
+| DBADMIN | &quot;dbAdmin&quot; |
+| CLUSTERMONITOR | &quot;clusterMonitor&quot; |
 | READANYDATABASE | &quot;readAnyDatabase&quot; |
+| READWRITEANYDATABASE | &quot;readWriteAnyDatabase&quot; |
+| DBADMINANYDATABASE | &quot;dbAdminAnyDatabase&quot; |
 
 

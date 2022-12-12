@@ -4,16 +4,16 @@ All URIs are relative to *https://api.ionos.com/databases/mongodb*
 
 | Method | HTTP request | Description |
 | ------------- | ------------- | ------------- |
-| [**clustersUsersDelete**](UsersApi.md#clustersusersdelete) | **DELETE** /clusters/{clusterId}/users/{database}/{username} | Delete a MongoDB User by ID |
-| [**clustersUsersFindById**](UsersApi.md#clustersusersfindbyid) | **GET** /clusters/{clusterId}/users/{database}/{username} | Get a MongoDB User by ID |
-| [**clustersUsersGet**](UsersApi.md#clustersusersget) | **GET** /clusters/{clusterId}/users | Get a Cluster Users |
-| [**clustersUsersPatch**](UsersApi.md#clustersuserspatch) | **PATCH** /clusters/{clusterId}/users/{database}/{username} | Patch a MongoDB User by ID |
+| [**clustersUsersDelete**](UsersApi.md#clustersusersdelete) | **DELETE** /clusters/{clusterId}/users/{username} | Delete a MongoDB User by ID |
+| [**clustersUsersFindById**](UsersApi.md#clustersusersfindbyid) | **GET** /clusters/{clusterId}/users/{username} | Get a MongoDB User by ID |
+| [**clustersUsersGet**](UsersApi.md#clustersusersget) | **GET** /clusters/{clusterId}/users | Get all Cluster Users |
+| [**clustersUsersPatch**](UsersApi.md#clustersuserspatch) | **PATCH** /clusters/{clusterId}/users/{username} | Patch a MongoDB User by ID |
 | [**clustersUsersPost**](UsersApi.md#clustersuserspost) | **POST** /clusters/{clusterId}/users | Create MongoDB User |
 
 
 <a name="clustersUsersDelete"></a>
 # **clustersUsersDelete**
-> User clustersUsersDelete(clusterId, database, username)
+> User clustersUsersDelete(clusterId, username)
 
 Delete a MongoDB User by ID
 
@@ -41,10 +41,9 @@ public class Example {
 
     UsersApi apiInstance = new UsersApi(defaultClient);
     String clusterId = "clusterId_example"; // String | The unique ID of the cluster.
-    String database = "database_example"; // String | The authentication database.
     String username = "username_example"; // String | The authentication username.
     try {
-      User result = apiInstance.clustersUsersDelete(clusterId, database, username);
+      User result = apiInstance.clustersUsersDelete(clusterId, username);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UsersApi#clustersUsersDelete");
@@ -62,7 +61,6 @@ public class Example {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **clusterId** | **String**| The unique ID of the cluster. |
-| **database** | **String**| The authentication database. |
 | **username** | **String**| The authentication username. |
 
 ### Return type
@@ -76,11 +74,11 @@ public class Example {
 
 <a name="clustersUsersFindById"></a>
 # **clustersUsersFindById**
-> User clustersUsersFindById(clusterId, database, username)
+> User clustersUsersFindById(clusterId, username)
 
 Get a MongoDB User by ID
 
-Retrieves the MongoDB user identified by the username and database parameters.
+Retrieves the MongoDB user identified by the username.
 
 ### Example
 ```java
@@ -104,10 +102,9 @@ public class Example {
 
     UsersApi apiInstance = new UsersApi(defaultClient);
     String clusterId = "clusterId_example"; // String | The unique ID of the cluster.
-    String database = "database_example"; // String | The authentication database.
     String username = "username_example"; // String | The authentication username.
     try {
-      User result = apiInstance.clustersUsersFindById(clusterId, database, username);
+      User result = apiInstance.clustersUsersFindById(clusterId, username);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UsersApi#clustersUsersFindById");
@@ -125,7 +122,6 @@ public class Example {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **clusterId** | **String**| The unique ID of the cluster. |
-| **database** | **String**| The authentication database. |
 | **username** | **String**| The authentication username. |
 
 ### Return type
@@ -141,7 +137,7 @@ public class Example {
 # **clustersUsersGet**
 > UsersList clustersUsersGet(clusterId)
 
-Get a Cluster Users
+Get all Cluster Users
 
 Retrieves a list of MongoDB users.
 
@@ -198,7 +194,7 @@ public class Example {
 
 <a name="clustersUsersPatch"></a>
 # **clustersUsersPatch**
-> User clustersUsersPatch(clusterId, database, username, patchUserRequest)
+> User clustersUsersPatch(clusterId, username, patchUserRequest)
 
 Patch a MongoDB User by ID
 
@@ -226,11 +222,10 @@ public class Example {
 
     UsersApi apiInstance = new UsersApi(defaultClient);
     String clusterId = "clusterId_example"; // String | The unique ID of the cluster.
-    String database = "database_example"; // String | The authentication database.
     String username = "username_example"; // String | The authentication username.
     PatchUserRequest patchUserRequest = new PatchUserRequest(); // PatchUserRequest | Part of the MongoDB user which should be modified.
     try {
-      User result = apiInstance.clustersUsersPatch(clusterId, database, username, patchUserRequest);
+      User result = apiInstance.clustersUsersPatch(clusterId, username, patchUserRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UsersApi#clustersUsersPatch");
@@ -248,7 +243,6 @@ public class Example {
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **clusterId** | **String**| The unique ID of the cluster. |
-| **database** | **String**| The authentication database. |
 | **username** | **String**| The authentication username. |
 | **patchUserRequest** |  [**PatchUserRequest**](PatchUserRequest.md)| Part of the MongoDB user which should be modified. |
 

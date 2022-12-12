@@ -5,7 +5,7 @@
     <artifactId>ionos-cloud-sdk-dbaas-mongo</artifactId>
     <packaging>jar</packaging>
     <name>ionos-cloud-sdk-dbaas-mongo</name>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
     <url>https://github.com/ionos-cloud/sdk-java-dbaas-mongo</url>
     <description>With IONOS Cloud Database as a Service, you can quickly setup and manage a MongoDb database</description>
     <scm>

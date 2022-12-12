@@ -14,5 +14,6 @@ The metadata of the resource.
 | **lastModifiedBy** | **String** | The last user who modified the resource. |  [optional] |
 | **lastModifiedByUserId** | **String** | The ID of the user who last modified the resource. |  [optional] |
 | **state** | [**State**](State.md) |  |  [optional] |
+| **health** | [**Health**](Health.md) |  |  [optional] |
 
 

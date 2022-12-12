@@ -9,7 +9,7 @@ info:
     \ (DCD) and the API use the same concepts consistently and are well suited for\
     \ smooth and intuitive use.\n"
   title: IONOS DBaaS MongoDB REST API
-  version: 0.1.0
+  version: 1.0.0
 servers:
 - description: Production
   url: https://api.ionos.com/databases/mongodb
@@ -305,7 +305,7 @@ paths:
       security:
       - basicAuth: []
       - tokenAuth: []
-      summary: Get a Cluster Users
+      summary: Get all Cluster Users
       tags:
       - Users
       x-accepts: application/json
@@ -364,7 +364,7 @@ paths:
       - Users
       x-contentType: application/json
       x-accepts: application/json
-  /clusters/{clusterId}/users/{database}/{username}:
+  /clusters/{clusterId}/users/{username}:
     delete:
       description: Deletes a MongoDB user specified by its ID.
       operationId: clustersUsersDelete
@@ -373,14 +373,6 @@ paths:
         explode: false
         in: path
         name: clusterId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: The authentication database.
-        explode: false
-        in: path
-        name: database
         required: true
         schema:
           type: string
@@ -428,22 +420,13 @@ paths:
       - Users
       x-accepts: application/json
     get:
-      description: Retrieves the MongoDB user identified by the username and database
-        parameters.
+      description: Retrieves the MongoDB user identified by the username.
       operationId: clustersUsersFindById
       parameters:
       - description: The unique ID of the cluster.
         explode: false
         in: path
         name: clusterId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: The authentication database.
-        explode: false
-        in: path
-        name: database
         required: true
         schema:
           type: string
@@ -498,14 +481,6 @@ paths:
         explode: false
         in: path
         name: clusterId
-        required: true
-        schema:
-          type: string
-        style: simple
-      - description: The authentication database.
-        explode: false
-        in: path
-        name: database
         required: true
         schema:
           type: string
@@ -884,15 +859,6 @@ components:
       schema:
         type: string
       style: simple
-    DatabasePath:
-      description: The authentication database.
-      explode: false
-      in: path
-      name: database
-      required: true
-      schema:
-        type: string
-      style: simple
     UsernamePath:
       description: The authentication username.
       explode: false
@@ -1025,7 +991,6 @@ components:
             $ref: '#/components/schemas/UserRoles'
           type: array
       required:
-      - database
       - password
       - username
     User:
@@ -1100,7 +1065,11 @@ components:
           enum:
           - read
           - readWrite
+          - dbAdmin
+          - clusterMonitor
           - readAnyDatabase
+          - readWriteAnyDatabase
+          - dbAdminAnyDatabase
           example: read
           type: string
         database:
@@ -1113,7 +1082,7 @@ components:
       description: List of snapshots.
       type: object
     SnapshotResponse:
-      description: A database snapshost.
+      description: A database snapshot.
       properties:
         type:
           $ref: '#/components/schemas/ResourceType'
@@ -1168,6 +1137,7 @@ components:
           createdBy: john.doe@example.com
           lastModifiedDate: 2020-12-11T13:37:50+01:00
           lastModifiedBy: jane.doe@example.com
+          health: HEALTHY
           state: AVAILABLE
           lastModifiedByUserId: 87f9a82e-b28d-49ed-9d04-fba2c0459cd3
         id: 498ae72f-411f-11eb-9d07-046c59cc737e
@@ -1251,15 +1221,16 @@ components:
           - de/txl
           - gb/lhr
           - es/vit
+          - us/ewr
+          - fr/par
         instances:
           description: |
             The total number of instances in the cluster (one primary and n-1 secondaries).
           example: 3
           type: integer
           x-extensible-enum:
+          - 1
           - 3
-          - 5
-          - 7
         connections:
           items:
             $ref: '#/components/schemas/Connection'
@@ -1358,6 +1329,7 @@ components:
           createdBy: john.doe@example.com
           lastModifiedDate: 2020-12-11T13:37:50+01:00
           lastModifiedBy: jane.doe@example.com
+          health: HEALTHY
           state: AVAILABLE
           lastModifiedByUserId: 87f9a82e-b28d-49ed-9d04-fba2c0459cd3
         properties:
@@ -1418,6 +1390,7 @@ components:
         createdBy: john.doe@example.com
         lastModifiedDate: 2020-12-11T13:37:50+01:00
         lastModifiedBy: jane.doe@example.com
+        health: HEALTHY
         state: AVAILABLE
         lastModifiedByUserId: 87f9a82e-b28d-49ed-9d04-fba2c0459cd3
       properties:
@@ -1449,8 +1422,16 @@ components:
           type: string
         state:
           $ref: '#/components/schemas/State'
+        health:
+          $ref: '#/components/schemas/Health'
     State:
-      description: The current status reported by the cluster.
+      description: |
+        The current status reported by the cluster.
+        * **AVAILABLE** Resources for this cluster exist and are healthy.
+        * **BUSY** Resources for this cluster are being created or updated.
+        * **DESTROYING** Delete cluster command was issued, the cluster is being deleted.
+        * **FAILED** Failed to get the cluster status.
+        * **UNKNOWN** The state is unknown.
       enum:
       - AVAILABLE
       - BUSY
@@ -1458,6 +1439,20 @@ components:
       - FAILED
       - UNKNOWN
       example: AVAILABLE
+      type: string
+    Health:
+      description: |
+        The current health status reported by the cluster.
+        * **HEALTHY** Primary exists and number of replicas is equal to specified.
+        * **UNHEALTHY** Primary does not exist or cluster doesn't have majority.
+        * **DEGRADED** Primary exists and number of replicas is less than specified.
+        * **UNKNOWN** The health status is unknown.
+      enum:
+      - HEALTHY
+      - UNHEALTHY
+      - DEGRADED
+      - UNKNOWN
+      example: HEALTHY
       type: string
     CreateClusterProperties:
       description: |
@@ -1498,9 +1493,8 @@ components:
           example: 3
           type: integer
           x-extensible-enum:
+          - 1
           - 3
-          - 5
-          - 7
         connections:
           items:
             $ref: '#/components/schemas/Connection'
@@ -1517,6 +1511,8 @@ components:
           - de/txl
           - gb/lhr
           - es/vit
+          - us/ewr
+          - fr/par
         displayName:
           description: The name of your cluster.
           example: MongoDB cluster
@@ -1540,6 +1536,7 @@ components:
           createdBy: john.doe@example.com
           lastModifiedDate: 2020-12-11T13:37:50+01:00
           lastModifiedBy: jane.doe@example.com
+          health: HEALTHY
           state: AVAILABLE
           lastModifiedByUserId: 87f9a82e-b28d-49ed-9d04-fba2c0459cd3
         properties:
@@ -1589,9 +1586,8 @@ components:
           example: 3
           type: integer
           x-extensible-enum:
+          - 1
           - 3
-          - 5
-          - 7
         connections:
           items:
             $ref: '#/components/schemas/Connection'
@@ -1652,9 +1648,8 @@ components:
       example: 3
       type: integer
       x-extensible-enum:
+      - 1
       - 3
-      - 5
-      - 7
     Location:
       description: |
         The physical location where the cluster will be created. This is the location where all your instances will be located. This property is immutable.
@@ -1665,6 +1660,8 @@ components:
       - de/txl
       - gb/lhr
       - es/vit
+      - us/ewr
+      - fr/par
     Connection:
       description: The network connection  details for your cluster.
       example:

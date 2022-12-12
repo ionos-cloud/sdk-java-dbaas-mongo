@@ -9,7 +9,7 @@ apply plugin: 'nexus-workflow'
 
 
 group = 'com.ionoscloud.dbaasmongo'
-version = '1.1.0'
+version = '1.2.0'
 
 buildscript {
     repositories {

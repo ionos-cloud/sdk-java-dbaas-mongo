@@ -25,28 +25,22 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 
 /**
- * The week day.
+ * The current health status reported by the cluster. * **HEALTHY** Primary exists and number of replicas is equal to specified. * **UNHEALTHY** Primary does not exist or cluster doesn&#39;t have majority. * **DEGRADED** Primary exists and number of replicas is less than specified. * **UNKNOWN** The health status is unknown. 
  */
-@JsonAdapter(DayOfTheWeek.Adapter.class)
-public enum DayOfTheWeek {
+@JsonAdapter(Health.Adapter.class)
+public enum Health {
   
-  SUNDAY("Sunday"),
+  HEALTHY("HEALTHY"),
   
-  MONDAY("Monday"),
+  UNHEALTHY("UNHEALTHY"),
   
-  TUESDAY("Tuesday"),
+  DEGRADED("DEGRADED"),
   
-  WEDNESDAY("Wednesday"),
-  
-  THURSDAY("Thursday"),
-  
-  FRIDAY("Friday"),
-  
-  SATURDAY("Saturday");
+  UNKNOWN("UNKNOWN");
 
   private String value;
 
-  DayOfTheWeek(String value) {
+  Health(String value) {
     this.value = value;
   }
 
@@ -59,8 +53,8 @@ public enum DayOfTheWeek {
     return String.valueOf(value);
   }
 
-  public static DayOfTheWeek fromValue(String value) {
-    for (DayOfTheWeek b : DayOfTheWeek.values()) {
+  public static Health fromValue(String value) {
+    for (Health b : Health.values()) {
       if (b.value.equals(value)) {
         return b;
       }
@@ -68,16 +62,16 @@ public enum DayOfTheWeek {
     return null;
   }
 
-  public static class Adapter extends TypeAdapter<DayOfTheWeek> {
+  public static class Adapter extends TypeAdapter<Health> {
     @Override
-    public void write(final JsonWriter jsonWriter, final DayOfTheWeek enumeration) throws IOException {
+    public void write(final JsonWriter jsonWriter, final Health enumeration) throws IOException {
       jsonWriter.value(enumeration.getValue());
     }
 
     @Override
-    public DayOfTheWeek read(final JsonReader jsonReader) throws IOException {
+    public Health read(final JsonReader jsonReader) throws IOException {
       String value = jsonReader.nextString();
-      return DayOfTheWeek.fromValue(value);
+      return Health.fromValue(value);
     }
   }
 }
