@@ -1,6 +1,6 @@
 /*
  * IONOS DBaaS MongoDB REST API
- * With IONOS Cloud Database as a Service, you have the ability to quickly set up and manage a MongoDB database. You can also delete clusters, manage backups and users via the API.   MongoDB is an open source, cross-platform, document-oriented database program. Classified as a NoSQL database program, it uses JSON-like documents with optional schemas.  The MongoDB API allows you to create additional database clusters or modify existing ones. Both tools, the Data Center Designer (DCD) and the API use the same concepts consistently and are well suited for smooth and intuitive use. 
+ * With IONOS Cloud Database as a Service, you have the ability to quickly set up and manage a MongoDB database. You can also delete clusters, manage backups and users via the API.  MongoDB is an open source, cross-platform, document-oriented database program. Classified as a NoSQL database program, it uses JSON-like documents with optional schemas.  The MongoDB API allows you to create additional database clusters or modify existing ones. Both tools, the Data Center Designer (DCD) and the API use the same concepts consistently and are well suited for smooth and intuitive use. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -312,6 +312,8 @@ public class UsersApi {
     /**
      * Build call for clustersUsersGet
      * @param clusterId The unique ID of the cluster. (required)
+     * @param limit The maximum number of elements to return. Use together with &#39;offset&#39; for pagination. (optional, default to 100)
+     * @param offset The first element to return. Use together with &#39;limit&#39; for pagination. (optional, default to 0)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -322,7 +324,7 @@ public class UsersApi {
         <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call clustersUsersGetCall(String clusterId, final ApiCallback<UsersList> _callback) throws ApiException {
+    public okhttp3.Call clustersUsersGetCall(String clusterId, Integer limit, Integer offset, final ApiCallback<UsersList> _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -334,6 +336,14 @@ public class UsersApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -354,7 +364,7 @@ public class UsersApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call clustersUsersGetValidateBeforeCall(String clusterId, final ApiCallback<UsersList> _callback) throws ApiException {
+    private okhttp3.Call clustersUsersGetValidateBeforeCall(String clusterId, Integer limit, Integer offset, final ApiCallback<UsersList> _callback) throws ApiException {
         
         // verify the required parameter 'clusterId' is set
         if (clusterId == null) {
@@ -362,7 +372,7 @@ public class UsersApi {
         }
         
 
-        okhttp3.Call localVarCall = clustersUsersGetCall(clusterId, _callback);
+        okhttp3.Call localVarCall = clustersUsersGetCall(clusterId, limit, offset, _callback);
         return localVarCall;
 
     }
@@ -371,6 +381,8 @@ public class UsersApi {
      * Get all Cluster Users
      * Retrieves a list of MongoDB users.
      * @param clusterId The unique ID of the cluster. (required)
+     * @param limit The maximum number of elements to return. Use together with &#39;offset&#39; for pagination. (optional, default to 100)
+     * @param offset The first element to return. Use together with &#39;limit&#39; for pagination. (optional, default to 0)
      * @return UsersList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -380,8 +392,8 @@ public class UsersApi {
         <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
      </table>
      */
-    public UsersList clustersUsersGet(String clusterId) throws ApiException {
-        ApiResponse<UsersList> localVarResp = clustersUsersGetWithHttpInfo(clusterId);
+    public UsersList clustersUsersGet(String clusterId, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<UsersList> localVarResp = clustersUsersGetWithHttpInfo(clusterId, limit, offset);
         return localVarResp.getData();
     }
 
@@ -389,6 +401,8 @@ public class UsersApi {
      * Get all Cluster Users
      * Retrieves a list of MongoDB users.
      * @param clusterId The unique ID of the cluster. (required)
+     * @param limit The maximum number of elements to return. Use together with &#39;offset&#39; for pagination. (optional, default to 100)
+     * @param offset The first element to return. Use together with &#39;limit&#39; for pagination. (optional, default to 0)
      * @return ApiResponse&lt;UsersList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -398,8 +412,8 @@ public class UsersApi {
         <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<UsersList> clustersUsersGetWithHttpInfo(String clusterId) throws ApiException {
-        okhttp3.Call localVarCall = clustersUsersGetValidateBeforeCall(clusterId, null);
+    public ApiResponse<UsersList> clustersUsersGetWithHttpInfo(String clusterId, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = clustersUsersGetValidateBeforeCall(clusterId, limit, offset, null);
         Type localVarReturnType = new TypeToken<UsersList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -408,6 +422,8 @@ public class UsersApi {
      * Get all Cluster Users (asynchronously)
      * Retrieves a list of MongoDB users.
      * @param clusterId The unique ID of the cluster. (required)
+     * @param limit The maximum number of elements to return. Use together with &#39;offset&#39; for pagination. (optional, default to 100)
+     * @param offset The first element to return. Use together with &#39;limit&#39; for pagination. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -418,9 +434,9 @@ public class UsersApi {
         <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call clustersUsersGetAsync(String clusterId, final ApiCallback<UsersList> _callback) throws ApiException {
+    public okhttp3.Call clustersUsersGetAsync(String clusterId, Integer limit, Integer offset, final ApiCallback<UsersList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = clustersUsersGetValidateBeforeCall(clusterId, _callback);
+        okhttp3.Call localVarCall = clustersUsersGetValidateBeforeCall(clusterId, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<UsersList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

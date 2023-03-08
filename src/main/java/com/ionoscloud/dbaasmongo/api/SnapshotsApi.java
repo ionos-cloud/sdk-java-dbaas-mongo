@@ -1,6 +1,6 @@
 /*
  * IONOS DBaaS MongoDB REST API
- * With IONOS Cloud Database as a Service, you have the ability to quickly set up and manage a MongoDB database. You can also delete clusters, manage backups and users via the API.   MongoDB is an open source, cross-platform, document-oriented database program. Classified as a NoSQL database program, it uses JSON-like documents with optional schemas.  The MongoDB API allows you to create additional database clusters or modify existing ones. Both tools, the Data Center Designer (DCD) and the API use the same concepts consistently and are well suited for smooth and intuitive use. 
+ * With IONOS Cloud Database as a Service, you have the ability to quickly set up and manage a MongoDB database. You can also delete clusters, manage backups and users via the API.  MongoDB is an open source, cross-platform, document-oriented database program. Classified as a NoSQL database program, it uses JSON-like documents with optional schemas.  The MongoDB API allows you to create additional database clusters or modify existing ones. Both tools, the Data Center Designer (DCD) and the API use the same concepts consistently and are well suited for smooth and intuitive use. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -58,6 +58,8 @@ public class SnapshotsApi {
     /**
      * Build call for clustersSnapshotsGet
      * @param clusterId The unique ID of the cluster. (required)
+     * @param limit The maximum number of elements to return. Use together with &#39;offset&#39; for pagination. (optional, default to 100)
+     * @param offset The first element to return. Use together with &#39;limit&#39; for pagination. (optional, default to 0)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -68,7 +70,7 @@ public class SnapshotsApi {
         <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call clustersSnapshotsGetCall(String clusterId, final ApiCallback<SnapshotList> _callback) throws ApiException {
+    public okhttp3.Call clustersSnapshotsGetCall(String clusterId, Integer limit, Integer offset, final ApiCallback<SnapshotList> _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -80,6 +82,14 @@ public class SnapshotsApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -100,7 +110,7 @@ public class SnapshotsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call clustersSnapshotsGetValidateBeforeCall(String clusterId, final ApiCallback<SnapshotList> _callback) throws ApiException {
+    private okhttp3.Call clustersSnapshotsGetValidateBeforeCall(String clusterId, Integer limit, Integer offset, final ApiCallback<SnapshotList> _callback) throws ApiException {
         
         // verify the required parameter 'clusterId' is set
         if (clusterId == null) {
@@ -108,7 +118,7 @@ public class SnapshotsApi {
         }
         
 
-        okhttp3.Call localVarCall = clustersSnapshotsGetCall(clusterId, _callback);
+        okhttp3.Call localVarCall = clustersSnapshotsGetCall(clusterId, limit, offset, _callback);
         return localVarCall;
 
     }
@@ -117,6 +127,8 @@ public class SnapshotsApi {
      * Get the snapshots of your cluster
      * Retrieves MongoDB snapshots.
      * @param clusterId The unique ID of the cluster. (required)
+     * @param limit The maximum number of elements to return. Use together with &#39;offset&#39; for pagination. (optional, default to 100)
+     * @param offset The first element to return. Use together with &#39;limit&#39; for pagination. (optional, default to 0)
      * @return SnapshotList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -126,8 +138,8 @@ public class SnapshotsApi {
         <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
      </table>
      */
-    public SnapshotList clustersSnapshotsGet(String clusterId) throws ApiException {
-        ApiResponse<SnapshotList> localVarResp = clustersSnapshotsGetWithHttpInfo(clusterId);
+    public SnapshotList clustersSnapshotsGet(String clusterId, Integer limit, Integer offset) throws ApiException {
+        ApiResponse<SnapshotList> localVarResp = clustersSnapshotsGetWithHttpInfo(clusterId, limit, offset);
         return localVarResp.getData();
     }
 
@@ -135,6 +147,8 @@ public class SnapshotsApi {
      * Get the snapshots of your cluster
      * Retrieves MongoDB snapshots.
      * @param clusterId The unique ID of the cluster. (required)
+     * @param limit The maximum number of elements to return. Use together with &#39;offset&#39; for pagination. (optional, default to 100)
+     * @param offset The first element to return. Use together with &#39;limit&#39; for pagination. (optional, default to 0)
      * @return ApiResponse&lt;SnapshotList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -144,8 +158,8 @@ public class SnapshotsApi {
         <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<SnapshotList> clustersSnapshotsGetWithHttpInfo(String clusterId) throws ApiException {
-        okhttp3.Call localVarCall = clustersSnapshotsGetValidateBeforeCall(clusterId, null);
+    public ApiResponse<SnapshotList> clustersSnapshotsGetWithHttpInfo(String clusterId, Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = clustersSnapshotsGetValidateBeforeCall(clusterId, limit, offset, null);
         Type localVarReturnType = new TypeToken<SnapshotList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -154,6 +168,8 @@ public class SnapshotsApi {
      * Get the snapshots of your cluster (asynchronously)
      * Retrieves MongoDB snapshots.
      * @param clusterId The unique ID of the cluster. (required)
+     * @param limit The maximum number of elements to return. Use together with &#39;offset&#39; for pagination. (optional, default to 100)
+     * @param offset The first element to return. Use together with &#39;limit&#39; for pagination. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -164,9 +180,9 @@ public class SnapshotsApi {
         <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call clustersSnapshotsGetAsync(String clusterId, final ApiCallback<SnapshotList> _callback) throws ApiException {
+    public okhttp3.Call clustersSnapshotsGetAsync(String clusterId, Integer limit, Integer offset, final ApiCallback<SnapshotList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = clustersSnapshotsGetValidateBeforeCall(clusterId, _callback);
+        okhttp3.Call localVarCall = clustersSnapshotsGetValidateBeforeCall(clusterId, limit, offset, _callback);
         Type localVarReturnType = new TypeToken<SnapshotList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

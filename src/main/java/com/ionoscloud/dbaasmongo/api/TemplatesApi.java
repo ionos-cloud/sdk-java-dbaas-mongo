@@ -1,6 +1,6 @@
 /*
  * IONOS DBaaS MongoDB REST API
- * With IONOS Cloud Database as a Service, you have the ability to quickly set up and manage a MongoDB database. You can also delete clusters, manage backups and users via the API.   MongoDB is an open source, cross-platform, document-oriented database program. Classified as a NoSQL database program, it uses JSON-like documents with optional schemas.  The MongoDB API allows you to create additional database clusters or modify existing ones. Both tools, the Data Center Designer (DCD) and the API use the same concepts consistently and are well suited for smooth and intuitive use. 
+ * With IONOS Cloud Database as a Service, you have the ability to quickly set up and manage a MongoDB database. You can also delete clusters, manage backups and users via the API.  MongoDB is an open source, cross-platform, document-oriented database program. Classified as a NoSQL database program, it uses JSON-like documents with optional schemas.  The MongoDB API allows you to create additional database clusters or modify existing ones. Both tools, the Data Center Designer (DCD) and the API use the same concepts consistently and are well suited for smooth and intuitive use. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -57,6 +57,8 @@ public class TemplatesApi {
 
     /**
      * Build call for templatesGet
+     * @param limit The maximum number of elements to return. Use together with &#39;offset&#39; for pagination. (optional, default to 100)
+     * @param offset The first element to return. Use together with &#39;limit&#39; for pagination. (optional, default to 0)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -67,7 +69,7 @@ public class TemplatesApi {
         <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call templatesGetCall(final ApiCallback<TemplateList> _callback) throws ApiException {
+    public okhttp3.Call templatesGetCall(Integer limit, Integer offset, final ApiCallback<TemplateList> _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -78,6 +80,14 @@ public class TemplatesApi {
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (offset != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("offset", offset));
+        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -98,10 +108,10 @@ public class TemplatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call templatesGetValidateBeforeCall(final ApiCallback<TemplateList> _callback) throws ApiException {
+    private okhttp3.Call templatesGetValidateBeforeCall(Integer limit, Integer offset, final ApiCallback<TemplateList> _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = templatesGetCall(_callback);
+        okhttp3.Call localVarCall = templatesGetCall(limit, offset, _callback);
         return localVarCall;
 
     }
@@ -109,6 +119,8 @@ public class TemplatesApi {
     /**
      * Get Templates
      * Retrieves a list of valid templates. These templates can be used to create MongoDB clusters; they contain properties, such as number of cores, RAM, and the storage size. 
+     * @param limit The maximum number of elements to return. Use together with &#39;offset&#39; for pagination. (optional, default to 100)
+     * @param offset The first element to return. Use together with &#39;limit&#39; for pagination. (optional, default to 0)
      * @return TemplateList
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -118,14 +130,16 @@ public class TemplatesApi {
         <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
      </table>
      */
-    public TemplateList templatesGet() throws ApiException {
-        ApiResponse<TemplateList> localVarResp = templatesGetWithHttpInfo();
+    public TemplateList templatesGet(Integer limit, Integer offset) throws ApiException {
+        ApiResponse<TemplateList> localVarResp = templatesGetWithHttpInfo(limit, offset);
         return localVarResp.getData();
     }
 
     /**
      * Get Templates
      * Retrieves a list of valid templates. These templates can be used to create MongoDB clusters; they contain properties, such as number of cores, RAM, and the storage size. 
+     * @param limit The maximum number of elements to return. Use together with &#39;offset&#39; for pagination. (optional, default to 100)
+     * @param offset The first element to return. Use together with &#39;limit&#39; for pagination. (optional, default to 0)
      * @return ApiResponse&lt;TemplateList&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -135,8 +149,8 @@ public class TemplatesApi {
         <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
      </table>
      */
-    public ApiResponse<TemplateList> templatesGetWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = templatesGetValidateBeforeCall(null);
+    public ApiResponse<TemplateList> templatesGetWithHttpInfo(Integer limit, Integer offset) throws ApiException {
+        okhttp3.Call localVarCall = templatesGetValidateBeforeCall(limit, offset, null);
         Type localVarReturnType = new TypeToken<TemplateList>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -144,6 +158,8 @@ public class TemplatesApi {
     /**
      * Get Templates (asynchronously)
      * Retrieves a list of valid templates. These templates can be used to create MongoDB clusters; they contain properties, such as number of cores, RAM, and the storage size. 
+     * @param limit The maximum number of elements to return. Use together with &#39;offset&#39; for pagination. (optional, default to 100)
+     * @param offset The first element to return. Use together with &#39;limit&#39; for pagination. (optional, default to 0)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -154,9 +170,9 @@ public class TemplatesApi {
         <tr><td> 0 </td><td> Any erroneous status code: 400 (parse error), 401 (auth error), 402 (trial access), 403 (insufficient permissions), 404 (not found), 405 (unsupported HTTP method), 415 (unsupported content type), 422 (validation error), 429 (request rate limit exceeded), 500 (server error), 503 (maintenance)  </td><td>  * Content-Type - The content type of the response. <br>  </td></tr>
      </table>
      */
-    public okhttp3.Call templatesGetAsync(final ApiCallback<TemplateList> _callback) throws ApiException {
+    public okhttp3.Call templatesGetAsync(Integer limit, Integer offset, final ApiCallback<TemplateList> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = templatesGetValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = templatesGetValidateBeforeCall(limit, offset, _callback);
         Type localVarReturnType = new TypeToken<TemplateList>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

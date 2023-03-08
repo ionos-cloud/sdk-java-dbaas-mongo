@@ -55,6 +55,7 @@ public class Example {
   }
 }
 ```
+⚠️ **Note**: for the example above, you need to provide all parameters to the method call. Null values will resolve to the API defaults.
 
 ### Parameters
 
@@ -116,6 +117,7 @@ public class Example {
   }
 }
 ```
+⚠️ **Note**: for the example above, you need to provide all parameters to the method call. Null values will resolve to the API defaults.
 
 ### Parameters
 
@@ -135,7 +137,7 @@ public class Example {
 
 <a name="clustersUsersGet"></a>
 # **clustersUsersGet**
-> UsersList clustersUsersGet(clusterId)
+> UsersList clustersUsersGet(clusterId, limit, offset)
 
 Get all Cluster Users
 
@@ -163,8 +165,10 @@ public class Example {
 
     UsersApi apiInstance = new UsersApi(defaultClient);
     String clusterId = "clusterId_example"; // String | The unique ID of the cluster.
+    Integer limit = 100; // Integer | The maximum number of elements to return. Use together with 'offset' for pagination.
+    Integer offset = 0; // Integer | The first element to return. Use together with 'limit' for pagination.
     try {
-      UsersList result = apiInstance.clustersUsersGet(clusterId);
+      UsersList result = apiInstance.clustersUsersGet(clusterId, limit, offset);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling UsersApi#clustersUsersGet");
@@ -176,12 +180,15 @@ public class Example {
   }
 }
 ```
+⚠️ **Note**: for the example above, you need to provide all parameters to the method call. Null values will resolve to the API defaults.
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **clusterId** | **String**| The unique ID of the cluster. |
+| **limit** | **Integer**| The maximum number of elements to return. Use together with &#39;offset&#39; for pagination. | [optional] [default to 100]
+| **offset** | **Integer**| The first element to return. Use together with &#39;limit&#39; for pagination. | [optional] [default to 0]
 
 ### Return type
 
@@ -237,6 +244,7 @@ public class Example {
   }
 }
 ```
+⚠️ **Note**: for the example above, you need to provide all parameters to the method call. Null values will resolve to the API defaults.
 
 ### Parameters
 
@@ -244,7 +252,7 @@ public class Example {
 | ------------- | ------------- | ------------- | ------------- |
 | **clusterId** | **String**| The unique ID of the cluster. |
 | **username** | **String**| The authentication username. |
-| **patchUserRequest** |  [**PatchUserRequest**](PatchUserRequest.md)| Part of the MongoDB user which should be modified. |
+| **patchUserRequest** |  [**PatchUserRequest**](../models/PatchUserRequest.md)| Part of the MongoDB user which should be modified. |
 
 ### Return type
 
@@ -299,13 +307,14 @@ public class Example {
   }
 }
 ```
+⚠️ **Note**: for the example above, you need to provide all parameters to the method call. Null values will resolve to the API defaults.
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **clusterId** | **String**| The unique ID of the cluster. |
-| **user** |  [**User**](User.md)| The user to be created. |
+| **user** |  [**User**](../models/User.md)| The user to be created. |
 
 ### Return type
 

@@ -9,7 +9,7 @@ All URIs are relative to *https://api.ionos.com/databases/mongodb*
 
 <a name="clustersSnapshotsGet"></a>
 # **clustersSnapshotsGet**
-> SnapshotList clustersSnapshotsGet(clusterId)
+> SnapshotList clustersSnapshotsGet(clusterId, limit, offset)
 
 Get the snapshots of your cluster
 
@@ -37,8 +37,10 @@ public class Example {
 
     SnapshotsApi apiInstance = new SnapshotsApi(defaultClient);
     String clusterId = "clusterId_example"; // String | The unique ID of the cluster.
+    Integer limit = 100; // Integer | The maximum number of elements to return. Use together with 'offset' for pagination.
+    Integer offset = 0; // Integer | The first element to return. Use together with 'limit' for pagination.
     try {
-      SnapshotList result = apiInstance.clustersSnapshotsGet(clusterId);
+      SnapshotList result = apiInstance.clustersSnapshotsGet(clusterId, limit, offset);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SnapshotsApi#clustersSnapshotsGet");
@@ -50,12 +52,15 @@ public class Example {
   }
 }
 ```
+⚠️ **Note**: for the example above, you need to provide all parameters to the method call. Null values will resolve to the API defaults.
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **clusterId** | **String**| The unique ID of the cluster. |
+| **limit** | **Integer**| The maximum number of elements to return. Use together with &#39;offset&#39; for pagination. | [optional] [default to 100]
+| **offset** | **Integer**| The first element to return. Use together with &#39;limit&#39; for pagination. | [optional] [default to 0]
 
 ### Return type
 

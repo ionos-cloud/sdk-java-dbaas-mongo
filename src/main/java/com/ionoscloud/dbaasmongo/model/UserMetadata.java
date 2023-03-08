@@ -1,6 +1,6 @@
 /*
  * IONOS DBaaS MongoDB REST API
- * With IONOS Cloud Database as a Service, you have the ability to quickly set up and manage a MongoDB database. You can also delete clusters, manage backups and users via the API.   MongoDB is an open source, cross-platform, document-oriented database program. Classified as a NoSQL database program, it uses JSON-like documents with optional schemas.  The MongoDB API allows you to create additional database clusters or modify existing ones. Both tools, the Data Center Designer (DCD) and the API use the same concepts consistently and are well suited for smooth and intuitive use. 
+ * With IONOS Cloud Database as a Service, you have the ability to quickly set up and manage a MongoDB database. You can also delete clusters, manage backups and users via the API.  MongoDB is an open source, cross-platform, document-oriented database program. Classified as a NoSQL database program, it uses JSON-like documents with optional schemas.  The MongoDB API allows you to create additional database clusters or modify existing ones. Both tools, the Data Center Designer (DCD) and the API use the same concepts consistently and are well suited for smooth and intuitive use. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -29,7 +29,7 @@ import org.threeten.bp.OffsetDateTime;
  * The metadata of the resource.
  */
 @ApiModel(description = "The metadata of the resource.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-12T08:52:41.764Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-03-08T13:45:07.355Z[Etc/UTC]")
 
 public class UserMetadata {
   
@@ -46,61 +46,6 @@ public class UserMetadata {
   public static final String SERIALIZED_NAME_CREATED_BY_USER_ID = "createdByUserId";
   @SerializedName(SERIALIZED_NAME_CREATED_BY_USER_ID)
   private String createdByUserId;
-
-
-  /**
-   * The user state.
-   */
-  @JsonAdapter(StateEnum.Adapter.class)
-  public enum StateEnum {
-    AVAILABLE("AVAILABLE"),
-    
-    CREATING("CREATING"),
-    
-    DESTROYING("DESTROYING");
-
-    private String value;
-
-    StateEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static StateEnum fromValue(String value) {
-
-      for (StateEnum b : StateEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<StateEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final StateEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public StateEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return StateEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_STATE = "state";
-  @SerializedName(SERIALIZED_NAME_STATE)
-  private StateEnum state;
 
   
 
@@ -175,30 +120,6 @@ public class UserMetadata {
   }
 
 
-
-  public UserMetadata state(StateEnum state) {
-    
-    this.state = state;
-    return this;
-  }
-
-   /**
-   * The user state.
-   * @return state
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "CREATING", value = "The user state.")
-
-  public StateEnum getState() {
-    return state;
-  }
-
-
-  public void setState(StateEnum state) {
-    this.state = state;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -208,7 +129,7 @@ public class UserMetadata {
       return false;
     }
     UserMetadata userMetadata = (UserMetadata) o;
-    return Objects.equals(this.createdDate, userMetadata.createdDate) && Objects.equals(this.createdBy, userMetadata.createdBy) && Objects.equals(this.createdByUserId, userMetadata.createdByUserId) && Objects.equals(this.state, userMetadata.state);
+    return Objects.equals(this.createdDate, userMetadata.createdDate) && Objects.equals(this.createdBy, userMetadata.createdBy) && Objects.equals(this.createdByUserId, userMetadata.createdByUserId);
   }
 
 
@@ -224,8 +145,6 @@ public class UserMetadata {
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
 
     sb.append("    createdByUserId: ").append(toIndentedString(createdByUserId)).append("\n");
-
-    sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("}");
     return sb.toString();
   }

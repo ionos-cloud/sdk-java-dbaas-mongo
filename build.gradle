@@ -9,7 +9,7 @@ apply plugin: 'nexus-workflow'
 
 
 group = 'com.ionoscloud.dbaasmongo'
-version = '1.2.0'
+version = '1.2.1'
 
 buildscript {
     repositories {
@@ -38,7 +38,7 @@ targetCompatibility = JavaVersion.VERSION_1_8
 
 install {
     repositories.mavenInstaller {
-        pom.artifactId = 'ionos-cloud-sdk-dbaas-mongo'
+        pom.artifactId = 'undefined'
     }
 }
 
@@ -65,7 +65,7 @@ publishing {
 
     publications {
         mavenJava(MavenPublication) {
-            artifactId = 'ionos-cloud-sdk-dbaas-mongo'
+            artifactId = 'undefined'
             from components.java
             versionMapping {
                 usage('java-api') {
@@ -78,7 +78,7 @@ publishing {
             pom {
                 name = "Ionos Cloud DBaas Sdk"
                 description = "With IONOS Cloud Database as a Service, you can quickly setup and manage a MongoDB database. It is designed to allow users to leverage the same power and flexibility found within the DCD visual tool. Both tools are consistent with their concepts and lend well to making the experience smooth and intuitive."
-                url = "https://github.com/ionos-cloud/ionos-cloud-sdk-dbaas-mongo"
+                url = "https://github.com/ionos-cloud/undefined"
                 licenses {
                     license {
                         name = "Unlicense"
@@ -93,8 +93,8 @@ publishing {
                     }
                 }
                 scm {
-                    connection = "scm:git:git@github.com:ionos-cloud/ionos-cloud-sdk-dbaas-mongo.git"
-                    developerConnection = "scm:git:git@github.com:ionos-cloud/ionos-cloud-sdk-dbaas-mongo.git"
+                    connection = "scm:git:git@github.com:ionos-cloud/undefined.git"
+                    developerConnection = "scm:git:git@github.com:ionos-cloud/undefined.git"
                     url = "https://github.com/ionos-cloud"
                 }
             }

@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ionoscloud.dbaasmongo</groupId>
-    <artifactId>ionos-cloud-sdk-dbaas-mongo</artifactId>
+    <artifactId>undefined</artifactId>
     <packaging>jar</packaging>
-    <name>ionos-cloud-sdk-dbaas-mongo</name>
-    <version>1.2.0</version>
+    <name>undefined</name>
+    <version>1.2.1</version>
     <url>https://github.com/ionos-cloud/sdk-java-dbaas-mongo</url>
     <description>With IONOS Cloud Database as a Service, you can quickly setup and manage a MongoDb database</description>
     <scm>
@@ -283,7 +283,7 @@
         <javax-annotation-version>1.3.2</javax-annotation-version>
         <junit-version>4.13.1</junit-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <sonar.projectKey>ionos-cloud_ionos-cloud-sdk-dbaas-mongo</sonar.projectKey>
+        <sonar.projectKey>ionos-cloud_undefined</sonar.projectKey>
         <sonar.organization>ionos-cloud</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <jackson-databind-nullable-version>0.2.2</jackson-databind-nullable-version>

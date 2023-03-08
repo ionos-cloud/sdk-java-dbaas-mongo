@@ -1,6 +1,6 @@
 /*
  * IONOS DBaaS MongoDB REST API
- * With IONOS Cloud Database as a Service, you have the ability to quickly set up and manage a MongoDB database. You can also delete clusters, manage backups and users via the API.   MongoDB is an open source, cross-platform, document-oriented database program. Classified as a NoSQL database program, it uses JSON-like documents with optional schemas.  The MongoDB API allows you to create additional database clusters or modify existing ones. Both tools, the Data Center Designer (DCD) and the API use the same concepts consistently and are well suited for smooth and intuitive use. 
+ * With IONOS Cloud Database as a Service, you have the ability to quickly set up and manage a MongoDB database. You can also delete clusters, manage backups and users via the API.  MongoDB is an open source, cross-platform, document-oriented database program. Classified as a NoSQL database program, it uses JSON-like documents with optional schemas.  The MongoDB API allows you to create additional database clusters or modify existing ones. Both tools, the Data Center Designer (DCD) and the API use the same concepts consistently and are well suited for smooth and intuitive use. 
  *
  * The version of the OpenAPI document: 1.0.0
  * 
@@ -35,7 +35,7 @@ import java.util.List;
  * The list of MongoDB templates.
  */
 @ApiModel(description = "The list of MongoDB templates.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2022-12-12T08:52:41.764Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-03-08T13:45:07.355Z[Etc/UTC]")
 
 public class TemplateList {
   
@@ -56,15 +56,15 @@ public class TemplateList {
 
   public static final String SERIALIZED_NAME_OFFSET = "offset";
   @SerializedName(SERIALIZED_NAME_OFFSET)
-  private Integer offset;
+  private Integer offset = 0;
 
 
   public static final String SERIALIZED_NAME_LIMIT = "limit";
   @SerializedName(SERIALIZED_NAME_LIMIT)
-  private Integer limit;
+  private Integer limit = 100;
 
 
-  public static final String SERIALIZED_NAME_LINKS = "_links";
+  public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private PaginationLinks links;
 
@@ -150,13 +150,19 @@ public class TemplateList {
 
 
 
+  public TemplateList offset(Integer offset) {
+    
+    this.offset = offset;
+    return this;
+  }
+
    /**
-   * The offset specified in the request (if none was specified, the default offset is 0) (not implemented yet). 
+   * The offset specified in the request (if none was specified, the default offset is 0). 
    * minimum: 0
    * @return offset
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "0", value = "The offset specified in the request (if none was specified, the default offset is 0) (not implemented yet). ")
+  @ApiModelProperty(example = "200", value = "The offset specified in the request (if none was specified, the default offset is 0). ")
 
   public Integer getOffset() {
     return offset;
@@ -169,13 +175,20 @@ public class TemplateList {
 
 
 
+  public TemplateList limit(Integer limit) {
+    
+    this.limit = limit;
+    return this;
+  }
+
    /**
-   * The limit specified in the request (if none was specified, use the endpoint&#39;s default pagination limit) (not implemented yet, always return number of items). 
+   * The limit specified in the request (if none was specified, the default limit is 100). 
    * minimum: 0
+   * maximum: 1000
    * @return limit
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "42", value = "The limit specified in the request (if none was specified, use the endpoint's default pagination limit) (not implemented yet, always return number of items). ")
+  @ApiModelProperty(example = "100", value = "The limit specified in the request (if none was specified, the default limit is 100). ")
 
   public Integer getLimit() {
     return limit;

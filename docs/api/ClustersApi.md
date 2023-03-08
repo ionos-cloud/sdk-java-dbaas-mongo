@@ -54,6 +54,7 @@ public class Example {
   }
 }
 ```
+⚠️ **Note**: for the example above, you need to provide all parameters to the method call. Null values will resolve to the API defaults.
 
 ### Parameters
 
@@ -113,6 +114,7 @@ public class Example {
   }
 }
 ```
+⚠️ **Note**: for the example above, you need to provide all parameters to the method call. Null values will resolve to the API defaults.
 
 ### Parameters
 
@@ -131,7 +133,7 @@ public class Example {
 
 <a name="clustersGet"></a>
 # **clustersGet**
-> ClusterList clustersGet(filterName)
+> ClusterList clustersGet(limit, offset, filterName)
 
 Get Clusters
 
@@ -158,9 +160,11 @@ public class Example {
 
 
     ClustersApi apiInstance = new ClustersApi(defaultClient);
+    Integer limit = 100; // Integer | The maximum number of elements to return. Use together with 'offset' for pagination.
+    Integer offset = 0; // Integer | The first element to return. Use together with 'limit' for pagination.
     String filterName = "filterName_example"; // String | Response filter to list only the MongoDB clusters that contain the specified name. The value is case insensitive and matched on the 'displayName' field. 
     try {
-      ClusterList result = apiInstance.clustersGet(filterName);
+      ClusterList result = apiInstance.clustersGet(limit, offset, filterName);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ClustersApi#clustersGet");
@@ -172,11 +176,14 @@ public class Example {
   }
 }
 ```
+⚠️ **Note**: for the example above, you need to provide all parameters to the method call. Null values will resolve to the API defaults.
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
+| **limit** | **Integer**| The maximum number of elements to return. Use together with &#39;offset&#39; for pagination. | [optional] [default to 100]
+| **offset** | **Integer**| The first element to return. Use together with &#39;limit&#39; for pagination. | [optional] [default to 0]
 | **filterName** | **String**| Response filter to list only the MongoDB clusters that contain the specified name. The value is case insensitive and matched on the &#39;displayName&#39; field.  | [optional]
 
 ### Return type
@@ -232,13 +239,14 @@ public class Example {
   }
 }
 ```
+⚠️ **Note**: for the example above, you need to provide all parameters to the method call. Null values will resolve to the API defaults.
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
 | **clusterId** | **String**| The unique ID of the cluster. |
-| **patchClusterRequest** |  [**PatchClusterRequest**](PatchClusterRequest.md)| Part of the cluster which should be modified. |
+| **patchClusterRequest** |  [**PatchClusterRequest**](../models/PatchClusterRequest.md)| Part of the cluster which should be modified. |
 
 ### Return type
 
@@ -292,12 +300,13 @@ public class Example {
   }
 }
 ```
+⚠️ **Note**: for the example above, you need to provide all parameters to the method call. Null values will resolve to the API defaults.
 
 ### Parameters
 
 | Name | Type | Description  | Notes |
 | ------------- | ------------- | ------------- | ------------- |
-| **createClusterRequest** |  [**CreateClusterRequest**](CreateClusterRequest.md)| The cluster to be created. |
+| **createClusterRequest** |  [**CreateClusterRequest**](../models/CreateClusterRequest.md)| The cluster to be created. |
 
 ### Return type
 
