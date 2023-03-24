@@ -20,48 +20,65 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.ionoscloud.dbaasmongo.model.Metadata;
+import com.ionoscloud.dbaasmongo.model.ResourceType;
+import com.ionoscloud.dbaasmongo.model.TemplateProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * A MongoDB template item.
+ * A MongoDB template.
  */
-@ApiModel(description = "A MongoDB template item.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-03-08T13:45:07.355Z[Etc/UTC]")
+@ApiModel(description = "A MongoDB template.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-03-24T12:17:12.722Z[Etc/UTC]")
 
 public class TemplateResponse {
   
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private ResourceType type;
+
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Metadata metadata;
 
 
-  public static final String SERIALIZED_NAME_EDITION = "edition";
-  @SerializedName(SERIALIZED_NAME_EDITION)
-  private String edition;
-
-
-  public static final String SERIALIZED_NAME_CORES = "cores";
-  @SerializedName(SERIALIZED_NAME_CORES)
-  private Integer cores;
-
-
-  public static final String SERIALIZED_NAME_RAM = "ram";
-  @SerializedName(SERIALIZED_NAME_RAM)
-  private Integer ram;
-
-
-  public static final String SERIALIZED_NAME_STORAGE_SIZE = "storageSize";
-  @SerializedName(SERIALIZED_NAME_STORAGE_SIZE)
-  private Integer storageSize;
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private TemplateProperties properties;
 
   
+
+  public TemplateResponse type(ResourceType type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "template", value = "")
+
+  public ResourceType getType() {
+    return type;
+  }
+
+
+  public void setType(ResourceType type) {
+    this.type = type;
+  }
+
+
 
   public TemplateResponse id(String id) {
     
@@ -70,11 +87,11 @@ public class TemplateResponse {
   }
 
    /**
-   * The unique template ID.
+   * The unique ID of the resource.
    * @return id
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "15c6dd2f-02d2-4987-b439-9a58dd59ecc3", value = "The unique template ID.")
+  @ApiModelProperty(example = "498ae72f-411f-11eb-9d07-046c59cc737e", value = "The unique ID of the resource.")
 
   public String getId() {
     return id;
@@ -87,122 +104,50 @@ public class TemplateResponse {
 
 
 
-  public TemplateResponse name(String name) {
+  public TemplateResponse metadata(Metadata metadata) {
     
-    this.name = name;
+    this.metadata = metadata;
     return this;
   }
 
    /**
-   * The name of the template.
-   * @return name
+   * Get metadata
+   * @return metadata
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "MongoDB Community 4XL", value = "The name of the template.")
+  @ApiModelProperty(value = "")
 
-  public String getName() {
-    return name;
+  public Metadata getMetadata() {
+    return metadata;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setMetadata(Metadata metadata) {
+    this.metadata = metadata;
   }
 
 
 
-  public TemplateResponse edition(String edition) {
+  public TemplateResponse properties(TemplateProperties properties) {
     
-    this.edition = edition;
+    this.properties = properties;
     return this;
   }
 
    /**
-   * The edition of the template (e.g. enterprise)
-   * @return edition
+   * Get properties
+   * @return properties
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "enterprise", value = "The edition of the template (e.g. enterprise)")
+  @ApiModelProperty(value = "")
 
-  public String getEdition() {
-    return edition;
+  public TemplateProperties getProperties() {
+    return properties;
   }
 
 
-  public void setEdition(String edition) {
-    this.edition = edition;
-  }
-
-
-
-  public TemplateResponse cores(Integer cores) {
-    
-    this.cores = cores;
-    return this;
-  }
-
-   /**
-   * The number of CPU cores.
-   * @return cores
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "1", value = "The number of CPU cores.")
-
-  public Integer getCores() {
-    return cores;
-  }
-
-
-  public void setCores(Integer cores) {
-    this.cores = cores;
-  }
-
-
-
-  public TemplateResponse ram(Integer ram) {
-    
-    this.ram = ram;
-    return this;
-  }
-
-   /**
-   * The amount of memory in GB.
-   * @return ram
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "4", value = "The amount of memory in GB.")
-
-  public Integer getRam() {
-    return ram;
-  }
-
-
-  public void setRam(Integer ram) {
-    this.ram = ram;
-  }
-
-
-
-  public TemplateResponse storageSize(Integer storageSize) {
-    
-    this.storageSize = storageSize;
-    return this;
-  }
-
-   /**
-   * The amount of storage size in GB.
-   * @return storageSize
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "30", value = "The amount of storage size in GB.")
-
-  public Integer getStorageSize() {
-    return storageSize;
-  }
-
-
-  public void setStorageSize(Integer storageSize) {
-    this.storageSize = storageSize;
+  public void setProperties(TemplateProperties properties) {
+    this.properties = properties;
   }
 
 
@@ -215,7 +160,7 @@ public class TemplateResponse {
       return false;
     }
     TemplateResponse templateResponse = (TemplateResponse) o;
-    return Objects.equals(this.id, templateResponse.id) && Objects.equals(this.name, templateResponse.name) && Objects.equals(this.edition, templateResponse.edition) && Objects.equals(this.cores, templateResponse.cores) && Objects.equals(this.ram, templateResponse.ram) && Objects.equals(this.storageSize, templateResponse.storageSize);
+    return Objects.equals(this.type, templateResponse.type) && Objects.equals(this.id, templateResponse.id) && Objects.equals(this.metadata, templateResponse.metadata) && Objects.equals(this.properties, templateResponse.properties);
   }
 
 
@@ -226,17 +171,13 @@ public class TemplateResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class TemplateResponse {\n");
     
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
 
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
 
-    sb.append("    edition: ").append(toIndentedString(edition)).append("\n");
-
-    sb.append("    cores: ").append(toIndentedString(cores)).append("\n");
-
-    sb.append("    ram: ").append(toIndentedString(ram)).append("\n");
-
-    sb.append("    storageSize: ").append(toIndentedString(storageSize)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
   }

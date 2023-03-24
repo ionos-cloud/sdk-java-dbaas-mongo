@@ -13,7 +13,7 @@
 
 package com.ionoscloud.dbaasmongo;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-03-08T13:45:07.355Z[Etc/UTC]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-03-24T12:17:12.722Z[Etc/UTC]")
 public class Pair {
     private String name = "";
     private String value = "";

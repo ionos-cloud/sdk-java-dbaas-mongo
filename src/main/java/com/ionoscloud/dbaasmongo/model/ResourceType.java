@@ -36,7 +36,9 @@ public enum ResourceType {
   
   USER("user"),
   
-  SNAPSHOT("snapshot");
+  SNAPSHOT("snapshot"),
+  
+  TEMPLATE("template");
 
   private String value;
 

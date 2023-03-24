@@ -136,7 +136,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("ionos-cloud-sdk-java-dbaas-mongo/v1.2.1");
+        setUserAgent("ionos-cloud-sdk-java-dbaas-mongo/v1.2.2");
 
         authentications = new HashMap<String, Authentication>();
     }

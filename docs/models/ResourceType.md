@@ -13,4 +13,6 @@
 
 * `SNAPSHOT` (value: `"snapshot"`)
 
+* `TEMPLATE` (value: `"template"`)
+
 

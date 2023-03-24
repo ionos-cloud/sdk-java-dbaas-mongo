@@ -32,10 +32,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The list of MongoDB templates.
+ * List of MongoDB templates.
  */
-@ApiModel(description = "The list of MongoDB templates.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-03-08T13:45:07.355Z[Etc/UTC]")
+@ApiModel(description = "List of MongoDB templates.")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2023-03-24T12:17:12.722Z[Etc/UTC]")
 
 public class TemplateList {
   
